@@ -1,0 +1,34 @@
+{
+  "name": "@lyfebloc/monero-core-js",
+  "version": "1.0.0",
+  "description": "JS library for creating Monero transactions",
+  "author": "Defi Wallet <support@defiwallet.fi> (https://defiwallet.fi)",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lyfebloc/monero-core-js.git"
+  },
+  "scripts": {
+    "serve": "webpack serve --config webpack.config.js",
+    "serve:wasm": "nodemon --watch ./src --ext cpp,hpp,h,c --exec 'docker exec -e WASM=1 -i monero-core-js_emscripten_1 ./bin/build-emcpp.sh'",
+    "serve:asm": "nodemon --watch ./src --ext cpp,hpp,h,c --exec 'docker exec -i monero-core-js_emscripten_1 ./bin/build-emcpp.sh'",
+    "test": "mocha test --recursive --reporter spec --timeout 60000",
+    "oldtest": "mocha -- ./tests/ --timeout 30000"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "html-webpack-plugin": "^5.3.1",
+    "mocha": "^8.4.0",
+    "nodemon": "^2.0.7",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "files": [
+    "index.js",
+    "build/MoneroCoreJS.js",
+    "build/MoneroCoreJS.asm.js",
+    "build/MoneroCoreJS.wasm"
+  ]
+}
